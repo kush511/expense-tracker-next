@@ -5,12 +5,30 @@ import Guest from '@/components/Guest';
 import RecordChart from '@/components/RecordChart';
 import RecordHistory from '@/components/RecordHistory';
 import { currentUser } from '@clerk/nextjs/server';
+import { db } from '@/lib/db';
 
 export default async function HomePage() {
-  const user = await currentUser();
-  if (!user) {
+  // Temporarily bypass auth and use specific user for testing
+  const dbUser = await db.user.findUnique({
+    where: {
+      clerkUserId: "user_30Xynx6RB9pvxOhr35jjmWQ0mkc"
+    }
+  });
+  
+  if (!dbUser) {
     return <Guest />;
   }
+  
+  // Create a mock user object that matches what Clerk normally provides
+  const user = {
+    id: dbUser.clerkUserId,
+    firstName: dbUser.name?.split(' ')[0] || 'Test',
+    lastName: dbUser.name?.split(' ')[1] || 'User',
+    imageUrl: dbUser.imageUrl || '/default-avatar.png',
+    emailAddresses: [{ emailAddress: dbUser.email }],
+    createdAt: dbUser.createdAt,
+    lastActiveAt: new Date(),
+  };
   return (
     <main className='bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans min-h-screen transition-colors duration-300'>
       {/* Mobile-optimized container with responsive padding */}
