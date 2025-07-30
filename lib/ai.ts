@@ -46,34 +46,27 @@ export async function generateExpenseInsights(
       date: expense.date,
     }));
 
-    const prompt = `Analyze the following expense data and provide 3-4 actionable financial insights. 
-    Return a JSON array of insights with this structure:
-    {
-      "type": "warning|info|success|tip",
-      "title": "Brief title",
-      "message": "Detailed insight message with specific numbers when possible",
-      "action": "Actionable suggestion",
-      "confidence": 0.8
-    }
-
-    Expense Data:
-    ${JSON.stringify(expensesSummary, null, 2)}
-
-    Focus on:
-    1. Spending patterns (day of week, categories)
-    2. Budget alerts (high spending areas)
-    3. Money-saving opportunities
-    4. Positive reinforcement for good habits
-
-    Return only valid JSON array, no additional text.`;
+    const prompt = `Analyze the following expense data and provide 3-4 concise, actionable, non-judgmental insights.
+All amounts are in ₹. Respond with a JSON array formatted as:
+[
+  {
+    "type": "warning|info|success|tip",
+    "title": "Brief title",
+    "message": "Insight message with amounts in ₹",
+    "action": "Practical suggestion",
+    "confidence": 0.8
+  }
+]
+Expense Data:
+${JSON.stringify(expensesSummary, null, 2)}
+Return only the JSON array.`;
 
     const completion = await openai.chat.completions.create({
       model: 'deepseek/deepseek-chat-v3-0324:free',
       messages: [
         {
           role: 'system',
-          content:
-            'You are a financial advisor AI that analyzes spending patterns and provides actionable insights. Always respond with valid JSON only.',
+          content: 'You are an assistant for ExpenseTracker, an expense-tracking website. Provide concise, practical, non-judgmental financial insights in Indian Rupees (₹) based on the user’s expense data. Use ₹ for amounts. Avoid generalizations like “average spending”. Respond with valid JSON only.',
         },
         {
           role: 'user',
@@ -142,8 +135,7 @@ export async function categorizeExpense(description: string): Promise<string> {
       messages: [
         {
           role: 'system',
-          content:
-            'You are an expense categorization AI. Categorize expenses into one of these categories: Food, Transportation, Entertainment, Shopping, Bills, Healthcare, Other. Respond with only the category name.',
+          content: 'You are an assistant that suggests the most appropriate expense category. Based on the description, choose one of: Food, Transportation, Entertainment, Shopping, Bills, Healthcare, Other. Respond only with the category name.',
         },
         {
           role: 'user',
@@ -188,17 +180,20 @@ export async function generateAIAnswer(
       date: expense.date,
     }));
 
-    const prompt = `Based on the following expense data, provide a detailed and actionable answer to this question: "${question}"
+    const prompt = `Based on the following expense data for an Indian user, provide a detailed and actionable answer to this question: "${question}"
 
-    Expense Data:
+    All amounts are in Indian Rupees (₹). Consider Indian financial context, cost of living, and spending patterns.
+
+    Expense Data (amounts in ₹):
     ${JSON.stringify(expensesSummary, null, 2)}
 
     Provide a comprehensive answer that:
     1. Addresses the specific question directly
-    2. Uses concrete data from the expenses when possible
-    3. Offers actionable advice
+    2. Uses concrete data from the expenses with amounts in ₹ when possible
+    3. Offers actionable advice relevant to Indian financial context
     4. Keeps the response concise but informative (2-3 sentences)
     
+    Always use ₹ symbol for amounts. Consider Indian lifestyle and financial norms.
     Return only the answer text, no additional formatting.`;
 
     const completion = await openai.chat.completions.create({
@@ -206,8 +201,7 @@ export async function generateAIAnswer(
       messages: [
         {
           role: 'system',
-          content:
-            'You are a helpful financial advisor AI that provides specific, actionable answers based on expense data. Be concise but thorough.',
+          content: 'You are a friendly assistant. Offer concise, practical answers in Indian Rupees (₹) based on the question and expense data. Focus on helpful advice without judgement.',
         },
         {
           role: 'user',
