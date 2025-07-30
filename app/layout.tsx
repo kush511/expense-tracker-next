@@ -31,6 +31,7 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <head>
+        <link rel="icon" href="icons8-money-16.png" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
