@@ -1,3 +1,4 @@
+ 'use client';
 import { SignInButton } from '@clerk/nextjs';
 
 const Guest = () => {
