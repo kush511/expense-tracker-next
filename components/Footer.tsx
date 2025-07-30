@@ -14,14 +14,13 @@ const Footer = () => {
               <div className='w-8 h-8 bg-gradient-to-br from-emerald-500 via-green-500 to-teal-500 rounded-xl flex items-center justify-center shadow-lg'>
                 <span className='text-white text-lg'>💰</span>
               </div>
-              <h2 className='text-xl font-bold bg-gradient-to-r from-emerald-600 via-green-500 to-teal-500 bg-clip-text text-transparent'>
-                ExpenseTracker AI
+                <h2 className='text-xl font-bold bg-gradient-to-r from-emerald-600 via-green-500 to-teal-500 bg-clip-text text-transparent'>
+                Vittam Manager
               </h2>
             </div>
-            <p className='text-gray-600 dark:text-gray-400 leading-relaxed max-w-sm'>
-              Intelligent financial management powered by AI. Track your
-              expenses, manage your budget, and gain insights into your spending
-              patterns.
+              <p className='text-gray-600 dark:text-gray-400 leading-relaxed max-w-sm'>
+              Intelligent financial management. Track your expenses,
+              manage your budget, and gain insights into your spending patterns.
             </p>
           </div>
 
@@ -90,7 +89,7 @@ const Footer = () => {
         <div className='flex flex-col md:flex-row justify-between items-center'>
           <div className='text-center md:text-left mb-4 md:mb-0'>
             <p className='text-gray-500 dark:text-gray-400 text-sm'>
-              © {new Date().getFullYear()} ExpenseTracker AI. All rights
+              © {new Date().getFullYear()} Vittam Manager. All rights
               reserved.
             </p>
           </div>

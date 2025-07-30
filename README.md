@@ -1,4 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vittam Manager
+
+A modern, AI-powered expense tracking application built with Next.js, featuring intelligent categorization, financial insights, and beautiful data visualizations. Designed specifically for Indian users with support for Indian Rupees (₹) and local context.
+
+## Features
+
+- 🤖 **AI-Powered Insights**: Get personalized financial recommendations and spending analysis
+- ✨ **Smart Categorization**: Automatic expense categorization using AI
+- 📊 **Beautiful Dashboard**: Intuitive charts and statistics to visualize your spending
+- 🔐 **Secure Authentication**: Powered by Clerk for seamless user management
+- 🌙 **Dark Mode**: Built-in theme switching for comfortable viewing
+- 💰 **Indian Rupee Support**: Native currency formatting and local context
+- 📱 **Mobile Responsive**: Works perfectly on all devices
+
+## Tech Stack
+
+- **Frontend**: Next.js 15, React 19, TypeScript
+- **Styling**: Tailwind CSS
+- **Database**: PostgreSQL with Prisma ORM
+- **Authentication**: Clerk
+- **AI**: OpenAI/OpenRouter integration
+- **Charts**: Chart.js with react-chartjs-2
+- **Deployment**: Vercel
 
 ## Getting Started
 
@@ -14,23 +36,67 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see Vittam Manager in action.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment Variables
 
-## Learn More
+Create a `.env.local` file in the root directory and add:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Database
+DATABASE_URL="your-postgresql-url"
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Clerk Authentication
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="your-clerk-publishable-key"
+CLERK_SECRET_KEY="your-clerk-secret-key"
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# AI Integration
+OPENROUTER_API_KEY="your-openrouter-api-key"
+# OR
+OPENAI_API_KEY="your-openai-api-key"
 
-## Deploy on Vercel
+# App URL
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Database Setup
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Set up your PostgreSQL database
+2. Run Prisma migrations:
+   ```bash
+   npx prisma migrate dev
+   ```
+3. Generate Prisma client:
+   ```bash
+   npx prisma generate
+   ```
+
+## Features Overview
+
+### AI-Powered Financial Insights
+- Automatic expense categorization
+- Spending pattern analysis
+- Personalized financial recommendations
+- Interactive AI chat for financial queries
+
+### Smart Dashboard
+- Real-time expense tracking
+- Visual charts and graphs
+- Monthly spending overview
+- Best/worst expense tracking
+
+### User Experience
+- Clean, modern interface
+- Dark/light theme support
+- Mobile-first responsive design
+- Fast, optimized performance
+
+## Contributing
+
+We welcome contributions! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License.

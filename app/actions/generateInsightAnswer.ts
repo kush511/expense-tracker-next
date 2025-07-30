@@ -6,14 +6,7 @@ import { generateAIAnswer, ExpenseRecord } from '@/lib/ai';
 
 export async function generateInsightAnswer(question: string): Promise<string> {
   try {
-    // const user = await checkUser();
-
-    //hardcoded for now
- const user = await db.user.findUnique({
-    where: {
-      clerkUserId: "user_30Xynx6RB9pvxOhr35jjmWQ0mkc"
-    }
-  });
+    const user = await checkUser();
     if (!user) {
       throw new Error('User not authenticated');
     }

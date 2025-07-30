@@ -148,7 +148,7 @@ const AddNewRecord = () => {
               id='date'
               className='w-full px-3 py-2.5 bg-white/70 dark:bg-gray-800/70 border-2 border-gray-200/80 dark:border-gray-600/80 rounded-xl focus:ring-2 focus:ring-emerald-500/30 focus:bg-white dark:focus:bg-gray-700/90 focus:border-emerald-400 dark:focus:border-emerald-400 text-gray-900 dark:text-gray-100 text-sm shadow-sm hover:shadow-md transition-all duration-200'
               required
-              onFocus={(e) => e.target.showPicker()}
+              onClick={(e) => e.currentTarget.showPicker()}
             />
           </div>
         </div>

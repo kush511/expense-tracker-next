@@ -6,14 +6,7 @@ import { generateExpenseInsights, AIInsight, ExpenseRecord } from '@/lib/ai';
 
 export async function getAIInsights(): Promise<AIInsight[]> {
   try {
-   // const user = await checkUser();
-
-    //hardcoded for now
- const user = await db.user.findUnique({
-    where: {
-      clerkUserId: "user_30Xynx6RB9pvxOhr35jjmWQ0mkc"
-    }
-  });
+    const user = await checkUser();
     if (!user) {
       throw new Error('User not authenticated');
     }
@@ -41,7 +34,7 @@ export async function getAIInsights(): Promise<AIInsight[]> {
         {
           id: 'welcome-1',
           type: 'info',
-          title: 'Welcome to ExpenseTracker AI!',
+          title: 'Welcome to Vittam Manager!',
           message:
             'Start adding your expenses to get personalized AI insights about your spending patterns.',
           action: 'Add your first expense',

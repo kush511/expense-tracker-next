@@ -53,10 +53,7 @@ async function addExpenseRecord(formData: FormData): Promise<RecordResult> {
   }
 
   // Get logged in user
-  // const { userId } = await auth();
-  
-  // TEMPORARY: Hardcode userId for testing when auth is bypassed
-  const userId = "user_30Xynx6RB9pvxOhr35jjmWQ0mkc";
+  const { userId } = await auth();
 
   // Check for user
   if (!userId) {

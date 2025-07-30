@@ -7,9 +7,7 @@ async function getBestWorstExpense(): Promise<{
   worstExpense?: number;
   error?: string;
 }> {
-//   const { userId } = await auth();
-
-const userId = "user_30Xynx6RB9pvxOhr35jjmWQ0mkc";
+  const { userId } = await auth();
   if (!userId) {
     return { error: 'User not found' };
   }

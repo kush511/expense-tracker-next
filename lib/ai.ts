@@ -13,7 +13,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENROUTER_API_KEY || process.env.OPENAI_API_KEY,
   defaultHeaders: {
     'HTTP-Referer': process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
-    'X-Title': 'ExpenseTracker ',
+    'X-Title': 'Vittam manager ',
   },
 });
 
@@ -66,7 +66,7 @@ Return only the JSON array.`;
       messages: [
         {
           role: 'system',
-          content: 'You are an assistant for ExpenseTracker, an expense-tracking website. Provide concise, practical, non-judgmental financial insights in Indian Rupees (₹) based on the user’s expense data. Use ₹ for amounts. Avoid generalizations like “average spending”. Respond with valid JSON only.',
+          content: 'You are an assistant for Vittam Manager, an expense-tracking website. Provide concise, practical, non-judgmental financial insights in Indian Rupees (₹) based on the user’s expense data. Use ₹ for amounts. Avoid generalizations like “average spending”. Respond with valid JSON only.',
         },
         {
           role: 'user',

@@ -7,10 +7,7 @@ async function getUserRecord(): Promise<{
   daysWithRecords?: number;
   error?: string;
 }> {
-//   const { userId } = await auth();
-
-//hardcoded for now
-  const userId = "user_30Xynx6RB9pvxOhr35jjmWQ0mkc";
+  const { userId } = await auth();
 
   if (!userId) {
     return { error: 'User not found' };
