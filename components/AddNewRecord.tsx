@@ -5,7 +5,7 @@ import { suggestCategory } from '@/app/actions/suggestCategory';
 
 const AddNewRecord = () => {
   const formRef = useRef<HTMLFormElement>(null);
-  const [amount, setAmount] = useState(50); // Default value for expense amount
+  const [amount, setAmount] = useState(10); // Default value for expense amount
   const [alertMessage, setAlertMessage] = useState<string | null>(null); // State for alert message
   const [alertType, setAlertType] = useState<'success' | 'error' | null>(null); // State for alert type
   const [isLoading, setIsLoading] = useState(false); // State for loading spinner
@@ -244,9 +244,7 @@ const AddNewRecord = () => {
                 type='number'
                 name='amount'
                 id='amount'
-                min='0'
-                
-                step='10'
+                min='1'
                 value={amount}
                 onChange={(e) => setAmount(parseFloat(e.target.value) || 0)}
                 className='w-full pl-6 pr-3 py-2.5 bg-white/70 dark:bg-gray-800/70 border-2 border-gray-200/80 dark:border-gray-600/80 rounded-xl focus:ring-2 focus:ring-emerald-500/30 focus:bg-white dark:focus:bg-gray-700/90 focus:border-emerald-400 dark:focus:border-emerald-400 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 text-sm font-semibold shadow-sm hover:shadow-md transition-all duration-200'
